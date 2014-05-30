@@ -23,7 +23,7 @@ namespace RestaurantUOC
             SqlCeDataReader resultSql = sqlQuery.ExecuteReader();
             if (resultSql != null)
             {
-                updatableContent.InnerHtml = "<table id=\"tableReservasA\"><tr bgcolor=\"#A4A4A4\"><td><strong>Nom</strong></td><td><strong>Cognoms</strong></td><td><strong>Telefon</strong></td><td><strong>Data</strong></td><td><strong>Comensals</strong></td></tr></table>";
+                headTable.InnerHtml = "<table id=\"tableReservasA\"><tr bgcolor=\"#A4A4A4\"><td><strong>Nom</strong></td><td><strong>Cognoms</strong></td><td><strong>Telefon</strong></td><td><strong>Data</strong></td><td><strong>Comensals</strong></td></tr></table>";
                 Table tableReservas = new Table();
                 tableReservas.ID = "tableReservas";
                 while (resultSql.Read())
@@ -39,12 +39,29 @@ namespace RestaurantUOC
                     dataReservas.Text = resultSql["Data"].ToString();
                     TableCell comenReservas = new TableCell();
                     comenReservas.Text = resultSql["Comensals"].ToString();
+                    TableCell menueditReservas = new TableCell();
+                        Button idform1 = new Button();
+                        idform1.ID = "detailid" + resultSql["Id"].ToString();
+                        idform1.CssClass = "detailres regform";
+                        idform1.Text = "Detall";
+                        Button idform2 = new Button();
+                        idform2.ID = "modid" + resultSql["Id"].ToString();
+                        idform2.CssClass = "novamodif regform";
+                        idform2.Text = "Modificar";
+                        Button idform3 = new Button();
+                        idform3.ID = "delid" + resultSql["Id"].ToString();
+                        idform3.CssClass = "delRes regform";
+                        idform3.Text = "Eliminar";
+                        menueditReservas.Controls.Add(idform1);
+                        menueditReservas.Controls.Add(idform2);
+                        menueditReservas.Controls.Add(idform3);
 
                     rowReservas.Controls.Add(nomReservas);
                     rowReservas.Controls.Add(cognomsReservas);
                     rowReservas.Controls.Add(telfReservas);
                     rowReservas.Controls.Add(dataReservas);
                     rowReservas.Controls.Add(comenReservas);
+                    rowReservas.Controls.Add(menueditReservas);
 
                     tableReservas.Controls.Add(rowReservas);
                 }

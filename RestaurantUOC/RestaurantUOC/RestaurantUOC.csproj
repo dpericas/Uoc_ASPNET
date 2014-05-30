@@ -55,7 +55,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Daniel_Pericas_Fernandez_PWA_Practica2css.css" />
+    <Content Include="RestaurantUOCcss.css" />
     <Content Include="Global.asax" />
     <Content Include="LlistaReserves.aspx" />
     <Content Include="Web.config" />

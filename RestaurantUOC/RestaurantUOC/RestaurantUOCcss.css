@@ -57,7 +57,7 @@ overflow-x:hidden;*/
 #updatableContent{
 margin:0 auto 0 auto;
 width:1000px;
-height:700px;
+height:600px;
 background-color:#D8D8D8;
 position:relative;
 top:10px;
@@ -137,8 +137,9 @@ position:relative;
 top:0px;
 left:100px;
 }
-.reservaRegForm input,.reservaRegForm2 input{
-width:100px;
+.regform
+{
+    width:100px;
 }
 /* FORMULARI NOVA RESERVA CSS */
 #reservaForm{
