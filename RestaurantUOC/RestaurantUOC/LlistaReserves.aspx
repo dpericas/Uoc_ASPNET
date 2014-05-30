@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>PROGRAMACIÓ WEB AVANÇADA - PRÀCTICA2</title>
-    <link rel="stylesheet" href="Daniel_Pericas_Fernandez_PWA_Practica2css.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="RestaurantUOCcss.css" type="text/css" media="all"/>
 </head>
 <body>
     <form id="form1" runat="server">
