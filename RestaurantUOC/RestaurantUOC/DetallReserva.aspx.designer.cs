@@ -10,7 +10,16 @@
 namespace RestaurantUOC {
     
     
-    public partial class LlistaReserves {
+    public partial class DetallReserva {
+        
+        /// <summary>
+        /// Control Head1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
         /// Control form1.
@@ -94,33 +103,6 @@ namespace RestaurantUOC {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl UpdatableDiv;
         
         /// <summary>
-        /// Control if24h.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel if24h;
-        
-        /// <summary>
-        /// Control if24h2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl if24h2;
-        
-        /// <summary>
-        /// Control headTable.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl headTable;
-        
-        /// <summary>
         /// Control updatableContent.
         /// </summary>
         /// <remarks>
@@ -130,30 +112,30 @@ namespace RestaurantUOC {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl updatableContent;
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control tabledetail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Table tabledetail;
         
         /// <summary>
-        /// Control tableReservas.
+        /// Control modid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tableReservas;
+        protected global::System.Web.UI.WebControls.Button modid;
         
         /// <summary>
-        /// Control novaresbutton.
+        /// Control delid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button novaresbutton;
+        protected global::System.Web.UI.WebControls.Button delid;
     }
 }

@@ -55,6 +55,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DetallReserva.aspx" />
+    <Content Include="NovaReserva.aspx" />
     <Content Include="RestaurantUOCcss.css" />
     <Content Include="Global.asax" />
     <Content Include="LlistaReserves.aspx" />
@@ -67,6 +69,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DetallReserva.aspx.cs">
+      <DependentUpon>DetallReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallReserva.aspx.designer.cs">
+      <DependentUpon>DetallReserva.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -76,6 +86,13 @@
     </Compile>
     <Compile Include="LlistaReserves.aspx.designer.cs">
       <DependentUpon>LlistaReserves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NovaReserva.aspx.cs">
+      <DependentUpon>NovaReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NovaReserva.aspx.designer.cs">
+      <DependentUpon>NovaReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

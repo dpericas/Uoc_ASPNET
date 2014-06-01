@@ -19,18 +19,27 @@
 	    <div id="NavButtonDiv" runat="server">
             <div id="Navul" runat="server">
                 <asp:ListItem>
-                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="#">LLISTAT</asp:HyperLink>
+                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="#"  Visible=false>LLISTAT</asp:HyperLink>
                 </asp:ListItem>
                 <asp:ListItem>
-                <asp:HyperLink runat="server" CssClass="show24h menuClass" NavigateUrl="#">24h</asp:HyperLink>
+                <asp:HyperLink runat="server" CssClass="show24h menuClass" NavigateUrl="#"  Visible=false>24h</asp:HyperLink>
                 </asp:ListItem>
             </div>
         </div>
 	    <div runat="server" id="UpdatableDiv">
-            <div runat="server" id="if24h"></div>
+            <asp:UpdatePanel ID="if24h" runat="server">
+            </asp:UpdatePanel>
+            <!--<div runat="server" id="if24h2"></div>-->
             <div runat="server" id="headTable"></div>
-            <div runat="server" id="updatableContent"></div>
-            <asp:Button ID="novaresbutton" runat="server" Text="Nova Reserva"/>
+            <div runat="server" id="updatableContent">
+           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Table ID="tableReservas" runat="server"> 
+                    </asp:Table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            </div>
+            <asp:Button ID="novaresbutton" class="boto" runat="server" Text="Nova Reserva" OnClick="nova_Click"/>
         </div>
     </div>
     </form>
