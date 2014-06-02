@@ -31,18 +31,23 @@
                     </asp:Panel>
                     <asp:Panel ID="reservaForm" runat="server">
                         <asp:Label ID="Label1" runat="server" Text="Nom:"></asp:Label><br />
-                        <input runat="server" id="nomForm" class="fieldsVal" type="text" /><br />
+                        <asp:TextBox ID="nomForm" class="fieldsVal" runat="server"></asp:TextBox><br />
                         <asp:Label ID="Label2" runat="server" Text="Cognoms:"></asp:Label><br />
-                        <input runat="server" id="cognomForm" class="fieldsVal" type="text" /><br />
+                        <asp:TextBox ID="cognomForm" class="fieldsVal" runat="server"></asp:TextBox><br />
                         <asp:Label ID="Label3" runat="server" Text="Telefon:"></asp:Label><br />
-                        <input runat="server" id="telForm" class="fieldsVal" type="text" /><br />
+                        <asp:TextBox ID="telForm" class="fieldsVal" runat="server"></asp:TextBox><br />
                         <asp:Label ID="Label4" runat="server" Text="Data:"></asp:Label><br />
+                        <asp:DropDownList ID="dies" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="mesos" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="anys" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="hores" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="minuts" runat="server"></asp:DropDownList><br />
                         <asp:Label ID="Label5" runat="server" Text="Comensals:"></asp:Label><br />
-                        <input runat="server" id="comensalForm" class="fieldsVal" type="text" /><br />
+                        <asp:TextBox ID="comensalForm" class="fieldsVal" runat="server"></asp:TextBox><br />
                         <asp:Label ID="Label6" runat="server" Text="Comentaris:"></asp:Label><br />
-                        <textarea runat="server" id="comentForm" class="fieldsVal" cols="50" rows="5"></textarea><br /><br /><br />
+                        <asp:TextBox ID="comentForm" class="fieldsVal" TextMode="MultiLine" Columns="50" Rows="5" runat="server"></asp:TextBox><br /><br /><br />
 
-                        <input runat="server" id="saveForm" type="submit" value="GUARDAR" class="boto"/>
+                        <asp:Button ID="saveform" class="boto" runat="server" Text="GUARDAR" />
                    </asp:Panel>
                 </ContentTemplate>
             </asp:UpdatePanel>

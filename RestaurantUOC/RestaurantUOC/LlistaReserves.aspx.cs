@@ -59,6 +59,7 @@ namespace RestaurantUOC
                              idform3.CssClass = "delRes regform";
                              idform3.Text = "Eliminar";
                              idform3.Click += new EventHandler(this.del_Click);
+                             //idform3.OnClientClick = "return false;";
                              //idform3.Click += del_Click;
                              menueditReservas.Controls.Add(idform1);
                              menueditReservas.Controls.Add(idform2);

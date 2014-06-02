@@ -154,7 +154,7 @@ namespace RestaurantUOC {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nomForm;
+        protected global::System.Web.UI.WebControls.TextBox nomForm;
         
         /// <summary>
         /// Control Label2.
@@ -172,7 +172,7 @@ namespace RestaurantUOC {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cognomForm;
+        protected global::System.Web.UI.WebControls.TextBox cognomForm;
         
         /// <summary>
         /// Control Label3.
@@ -190,7 +190,7 @@ namespace RestaurantUOC {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText telForm;
+        protected global::System.Web.UI.WebControls.TextBox telForm;
         
         /// <summary>
         /// Control Label4.
@@ -200,6 +200,51 @@ namespace RestaurantUOC {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
+        /// Control dies.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dies;
+        
+        /// <summary>
+        /// Control mesos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList mesos;
+        
+        /// <summary>
+        /// Control anys.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList anys;
+        
+        /// <summary>
+        /// Control hores.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList hores;
+        
+        /// <summary>
+        /// Control minuts.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList minuts;
         
         /// <summary>
         /// Control Label5.
@@ -217,7 +262,7 @@ namespace RestaurantUOC {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText comensalForm;
+        protected global::System.Web.UI.WebControls.TextBox comensalForm;
         
         /// <summary>
         /// Control Label6.
@@ -235,15 +280,15 @@ namespace RestaurantUOC {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea comentForm;
+        protected global::System.Web.UI.WebControls.TextBox comentForm;
         
         /// <summary>
-        /// Control saveForm.
+        /// Control saveform.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit saveForm;
+        protected global::System.Web.UI.WebControls.Button saveform;
     }
 }

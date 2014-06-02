@@ -28,16 +28,16 @@ namespace RestaurantUOC
                 SqlCeDataReader resultSql = sqlQuery.ExecuteReader();
                 while (resultSql.Read())
                 {
-                    nomForm.Value = resultSql["Nom"].ToString();
+                    nomForm.Text = resultSql["Nom"].ToString();
                     //string Nom = resultSql["Nom"].ToString();
-                    cognomForm.Value = resultSql["Cognoms"].ToString();
+                    cognomForm.Text = resultSql["Cognoms"].ToString();
                     //string Cognoms = resultSql["Cognoms"].ToString();
-                    telForm.Value = resultSql["Telefon"].ToString();
+                    telForm.Text = resultSql["Telefon"].ToString();
                     //string Telefon = resultSql["Telefon"].ToString();
                     string Data = resultSql["Data"].ToString();
-                    comensalForm.Value = resultSql["Comensals"].ToString();
+                    comensalForm.Text = resultSql["Comensals"].ToString();
                     //int Comensals = int.Parse(resultSql["Comensals"].ToString());
-                    comentForm.Value = resultSql["Comentaris"].ToString();
+                    comentForm.Text = resultSql["Comentaris"].ToString();
                     //string Comentaris = resultSql["Comentaris"].ToString();
                 }
                 linksql.Close();
