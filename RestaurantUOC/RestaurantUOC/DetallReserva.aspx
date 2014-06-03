@@ -28,9 +28,9 @@
                 <asp:Table ID="tabledetail" runat="server">
                 </asp:Table>
             </div>
-            <div id=idform" class="reservaRegForm2">
-                <asp:Button runat="server" id="modid" Text="Modificar" class="boto" OnClick="nova_Click"/>
-                <asp:Button runat="server" id="delid" Text="Eliminar" class="boto" OnClick="del_Click"/>
+            <div id="idform" class="reservaRegForm2">
+                <asp:Button runat="server" id="modid" Text="Modificar" Cssclass="boto" OnClick="nova_Click"/>
+                <asp:Button runat="server" id="delid" Text="Eliminar" Cssclass="boto" OnClick="del_Click"/>
             </div>
         </div>
     </div>

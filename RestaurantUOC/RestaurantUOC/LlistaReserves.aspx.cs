@@ -14,10 +14,12 @@ namespace RestaurantUOC
         protected void Page_Load(object sender, EventArgs e)
         {
              //Response.Write(@"<script languange='javascript'>alert('Arrancant Pagina');</script>");
-             searchReserves(null, 0, null);
+            if (!Page.IsPostBack) searchReserves();
+            else searchReserves();
+           
         }
 
-         protected void searchReserves(string valAction, int idData, string postData)
+         protected void searchReserves()
          {
              //Response.Write(@"<script languange='javascript'>alert('carregant');</script>");
              SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
@@ -58,6 +60,7 @@ namespace RestaurantUOC
                              idform3.ID = "delid" + resultSql["Id"].ToString();
                              idform3.CssClass = "delRes regform";
                              idform3.Text = "Eliminar";
+                             //idform3.Attributes.Add("RowIndex","<%# Container.Itemindex %>");
                              idform3.Click += new EventHandler(this.del_Click);
                              //idform3.OnClientClick = "return false;";
                              //idform3.Click += del_Click;
@@ -81,13 +84,15 @@ namespace RestaurantUOC
              linksql.Close();
          }
 
-         void del_Click(object sender, EventArgs e)
+         protected void del_Click(object sender, EventArgs e)
          {
              
              var myButton = (Button)sender;
+             var parently = myButton.Parent.Parent;
              var myID = int.Parse(myButton.ID.TrimStart('d', 'e', 'l', 'i', 'd'));
-             myButton.Text = myID.ToString();
-             tableReservas.Rows.RemoveAt(1);
+             //var rowindex1 = int.Parse(myButton.Attributes["RowIndex"]);
+             //myButton.Text = myID.ToString();
+             //tableReservas.Rows.RemoveAt(1);
              //FindControl("Row" + myID).Controls.Clear();
             /* SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
              linksql.Open();
@@ -96,6 +101,7 @@ namespace RestaurantUOC
              sqlQuery.ExecuteNonQuery();
              linksql.Close();
              tableReservas.Rows.RemoveAt(1);*/
+             searchReserves();
          }
          protected void detail_Click(object sender, EventArgs e)
          {

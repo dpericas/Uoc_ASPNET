@@ -39,7 +39,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             </div>
-            <asp:Button ID="novaresbutton" class="boto" runat="server" Text="Nova Reserva" OnClick="nova_Click"/>
+            <asp:Button ID="novaresbutton" CssClass="boto" runat="server" Text="Nova Reserva" OnClick="nova_Click"/>
         </div>
     </div>
     </form>
