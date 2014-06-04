@@ -91,6 +91,9 @@ namespace RestaurantUOC
         }
         protected void boto_Click(object sender, EventArgs e)
         {
+            var id=0;
+            if (Request.QueryString["id"] != null) id = int.Parse(Request.QueryString["id"]);
+
             //Validem com si fos requiredfield a cada camp que volem. Amb AjaxControlToolkit ja controlem el format de cada camp.
             var formFull = true;
             String errorInfoBoxText = "";
@@ -103,7 +106,10 @@ namespace RestaurantUOC
             DateTime Data = new DateTime(int.Parse(anys.SelectedValue), (mesos.SelectedIndex+1), int.Parse(dies.SelectedValue), int.Parse(hores.SelectedValue), int.Parse(minuts.SelectedValue), 0);
             DateTime Datanow = DateTime.Now;
             var diftime = Data.Subtract(Datanow).TotalMilliseconds;
-            if (diftime < 24 * 60 * 60 * 1000)
+            int timeToDif = 0;
+            if (id != 0) timeToDif = 60 * 60 * 1000; // DEIXEM MODIFICAR FINS UNA HORA ABANS.
+            else timeToDif = 24 * 60 * 60 * 1000; // AMB NOVA RESERVA NOMÉS PERMETEM FINS 1 DIA ABANS.
+            if (diftime < timeToDif)
             {
                 errorInfoBoxText += "DATA incorrecte. La hora de la reserva ha de ser posterior a 24h.</br>";
                 formFull = false;
@@ -130,14 +136,18 @@ namespace RestaurantUOC
             infoBox.Controls.Add(new LiteralControl(errorInfoBoxText));
             if (formFull == true)
             {
-                int id;
-                if (Request.QueryString["id"] != null) id = int.Parse(Request.QueryString["id"]);
-                var dataToInsert = Data.ToString();
                 SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
                 linksql.Open();
-                //SqlCeCommand sqlQuery = new SqlCeCommand("INSERT INTO reserves (Nom,Cognoms,Telefon,Data,Comensals,Comentaris) VALUES (\"" + nomForm.Text + "\",\"" + cognomForm.Text + "\",\"" + telForm.Text + "\",\"" + dataToInsert + "\"," + int.Parse(comensalForm.Text) + ",\"" + comentForm.Text + "\")", linksql);
-                
-                SqlCeCommand sqlQuery = new SqlCeCommand("INSERT INTO reserves (Nom,Cognoms,Telefon,Data,Comensals,Comentaris)" + "VALUES (@elNom,@elCognom,@elTelf,@elData,@elComensal,@elComentari)", linksql);
+                SqlCeCommand sqlQuery = new SqlCeCommand();
+                if (id != 0)
+                {
+                    sqlQuery.CommandText = "UPDATE reserves SET Nom=@elNom,Cognoms=@elCognom,Telefon=@elTelf,Data=@elData,Comensals=@elComensal,Comentaris=@elComentari WHERE Id=" + id;
+                }
+                else
+                {
+                    sqlQuery.CommandText = "INSERT INTO reserves (Nom,Cognoms,Telefon,Data,Comensals,Comentaris)" + "VALUES (@elNom,@elCognom,@elTelf,@elData,@elComensal,@elComentari)";
+                }
+                sqlQuery.Connection = linksql;
                 sqlQuery.Parameters.AddWithValue("@elNom", nomForm.Text);
                 sqlQuery.Parameters.AddWithValue("@elCognom", cognomForm.Text);
                 sqlQuery.Parameters.AddWithValue("@elTelf", telForm.Text);
@@ -146,6 +156,14 @@ namespace RestaurantUOC
                 sqlQuery.Parameters.AddWithValue("@elComentari", comentForm.Text);
                 sqlQuery.ExecuteNonQuery();
                 linksql.Close();
+                if (id != 0)
+                {
+                    Response.Redirect("LlistaReserves.aspx"); // DESPRÉS DE MODIFICAR LA RESERRVA TORNEM AL LLISTAT PRINCIPAL.
+                }
+                else
+                {
+                    Response.Redirect("NovaReserva.aspx"); // DESPRÉS DE INSERTAR LA NOVA RESERVA PERMETEM INSERTAR NOVES RESERVES, INICIALITZANT EL FORMULARI.
+                }
             }
         }
     }

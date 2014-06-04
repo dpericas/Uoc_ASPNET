@@ -27,9 +27,15 @@
             </div>
         </div>
 	    <div runat="server" id="UpdatableDiv">
-            <asp:UpdatePanel ID="if24h" runat="server">
+            <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="1000"></asp:Timer>
+            <asp:UpdatePanel ID="UpdatePanel24" runat="server" UpdateMode="Always">
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+                </Triggers>
+                <ContentTemplate>
+                    <asp:Panel ID="if24h" runat="server"></asp:Panel>
+                </ContentTemplate>
             </asp:UpdatePanel>
-            <!--<div runat="server" id="if24h2"></div>-->
             <div runat="server" id="headTable"></div>
             <div runat="server" id="updatableContent">
            <asp:UpdatePanel ID="UpdatePanel1" runat="server">

@@ -13,20 +13,32 @@ namespace RestaurantUOC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var typepage = "";
+            if (Request.QueryString["type"] != null) typepage = Request.QueryString["type"];
              //Response.Write(@"<script languange='javascript'>alert('Arrancant Pagina');</script>");
-            if (!Page.IsPostBack) searchReserves();
-            else searchReserves();
+            if (!Page.IsPostBack) searchReserves(typepage);
+           // else searchReserves(typepage);
            
         }
 
-         protected void searchReserves()
+         protected void searchReserves(string type24)
          {
              //Response.Write(@"<script languange='javascript'>alert('carregant');</script>");
              SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
              linksql.Open();
-             SqlCeCommand sqlQuery = new SqlCeCommand("SELECT * FROM reserves", linksql);
+             SqlCeCommand sqlQuery = new SqlCeCommand();
+             if (type24 == "")
+             {
+                 sqlQuery.CommandText = "SELECT * FROM reserves WHERE Data > GETDATE() order by Data";
+             }
+             else
+             {
+                 sqlQuery.CommandText = "SELECT * FROM reserves WHERE Data BETWEEN GETDATE() AND (DATEADD(day,1,GETDATE()))";
+                 Timer1.Enabled = false; // PAREM LA CONSULTA DE 24h JA QUE JA ESTEM A LA PÀGINA DE 24h.
+             }
+             sqlQuery.Connection = linksql;
              SqlCeDataReader resultSql = sqlQuery.ExecuteReader();
-             if (resultSql != null)
+             if (resultSql.Read())
              {
                      headTable.InnerHtml = "<table id=\"tableReservasA\"><tr bgcolor=\"#A4A4A4\"><td><strong>Nom</strong></td><td><strong>Cognoms</strong></td><td><strong>Telefon</strong></td><td><strong>Data</strong></td><td><strong>Comensals</strong></td></tr></table>";
                       while (resultSql.Read())
@@ -101,7 +113,7 @@ namespace RestaurantUOC
              sqlQuery.ExecuteNonQuery();
              linksql.Close();
              tableReservas.Rows.RemoveAt(1);*/
-             searchReserves();
+             //searchReserves();
          }
          protected void detail_Click(object sender, EventArgs e)
          {
@@ -118,6 +130,22 @@ namespace RestaurantUOC
                  Response.Redirect("NovaReserva.aspx?id=" + myID);
              }
              else Response.Redirect("NovaReserva.aspx");
+         }
+         protected void Timer1_Tick(object sender, EventArgs e)
+         {
+             if24h.Controls.Clear();
+             SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
+             linksql.Open();
+             SqlCeCommand sqlQuery = new SqlCeCommand("SELECT * FROM reserves WHERE Data BETWEEN GETDATE() AND (DATEADD(day,1,GETDATE()))", linksql);
+             SqlCeDataReader resultSql = sqlQuery.ExecuteReader();
+             if (resultSql.Read())
+             {
+                 HyperLink link24 = new HyperLink();
+                 link24.Text = "TEnim links abans de 24h";
+                 link24.NavigateUrl = "LlistaReserves.aspx?type=24h";
+                 if24h.Controls.Add(link24);
+             }
+             linksql.Close();
          }
         void DataBaseConect()
         {
