@@ -1,0 +1,65 @@
+	    <div runat="server" id="UpdatableDiv">
+            <div runat="server" id="updatableContent">
+           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:Panel ID="infoBox" runat="server">
+                    </asp:Panel>
+                    <asp:Panel ID="reservaForm" runat="server">
+                        <asp:Label ID="Label1" runat="server" Text="Nom:"></asp:Label><br />
+                        <asp:TextBox ID="nomForm" Cssclass="fieldsVal" runat="server"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="nomForm" runat="server" ErrorMessage="Obligatori introduïr el Nom per poder fer la reserva" Display="None"></asp:RequiredFieldValidator>
+                        <asp:ValidatorCalloutExtender ID="ValidatorCalloutExtender1" runat="server" TargetControlID="RequiredFieldValidator1">
+                        </asp:ValidatorCalloutExtender>
+                        <asp:CustomValidator ID="customValidator1" runat="server" ClientValidationFunction="document.getElementById('nomForm').css('backgroundcolor','red');" ControlToValidate="nomForm"></asp:CustomValidator>
+
+                        <asp:Label ID="Label2" runat="server" Text="Cognoms:"></asp:Label><br />
+                        <asp:TextBox ID="cognomForm" Cssclass="fieldsVal" runat="server"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="cognomForm" runat="server" ErrorMessage="Obligatori introduïr els Cognoms per poder fer la reserva" Display="None"></asp:RequiredFieldValidator>
+                        <asp:ValidatorCalloutExtender ID="ValidatorCalloutExtender2" runat="server" TargetControlID="RequiredFieldValidator2">
+                        </asp:ValidatorCalloutExtender>
+                        <asp:Label ID="Label3" runat="server" Text="Telefon:"></asp:Label><br />
+                        <asp:TextBox ID="telForm" Cssclass="fieldsVal" runat="server"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="telForm" runat="server" ErrorMessage="Obligatori introduïr el Telèfon per poder fer la reserva" Display="None"></asp:RequiredFieldValidator>
+                        <asp:ValidatorCalloutExtender ID="ValidatorCalloutExtender3" runat="server" TargetControlID="RequiredFieldValidator3">
+                        </asp:ValidatorCalloutExtender>
+                        <asp:FilteredTextBoxExtender ID="FilteredTextBoxExternder2" runat="server" TargetControlID="telForm" FilterMode="ValidChars" ValidChars="1234567890()-"></asp:FilteredTextBoxExtender>
+                        <asp:Label ID="Label4" runat="server" Text="Data:"></asp:Label><br />
+                        <asp:DropDownList ID="dies" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="mesos" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="anys" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="hores" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="minuts" runat="server"></asp:DropDownList><br />
+                        <asp:Label ID="Label5" runat="server" Text="Comensals:"></asp:Label><br />
+                        <asp:TextBox ID="comensalForm" Cssclass="fieldsVal" runat="server"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="comensalForm" runat="server" ErrorMessage="Obligatori introduïr el número de comensals per poder fer la reserva" Display="None"></asp:RequiredFieldValidator>
+                        <asp:ValidatorCalloutExtender ID="ValidatorCalloutExtender4" runat="server" TargetControlID="RequiredFieldValidator4">
+                        </asp:ValidatorCalloutExtender>
+                        <asp:FilteredTextBoxExtender ID="FilteredTextBoxExternder1" runat="server" TargetControlID="comensalForm" FilterType="Numbers"></asp:FilteredTextBoxExtender>
+                        <asp:RangeValidator ID="RangeValidator1" ControlToValidate="comensalForm" MinimumValue="1" MaximumValue="10" Type="Integer" Text="Només es permeten reserves de taules fins a 10 persones" runat="server" ErrorMessage="Només es permeten reserves de taules fins a 10 persones" Display="None"></asp:RangeValidator>
+                        <asp:ValidatorCalloutExtender ID="ValidatorCalloutExtender5" runat="server" TargetControlID="RangeValidator1"></asp:ValidatorCalloutExtender>
+                        <asp:Label ID="Label6" runat="server" Text="Comentaris:"></asp:Label><br />
+                        <asp:TextBox ID="comentForm" Cssclass="fieldsVal" TextMode="MultiLine" Columns="50" Rows="5" runat="server"></asp:TextBox><br /><br /><br />
+
+                        <asp:Button ID="saveform" CssClass="boto" runat="server" Text="GUARDAR" OnClick="boto_Click"/>
+                   </asp:Panel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            </div>
+        </div>
+		
+		
+		
+		
+		
+		
+		        protected void boto_Click(object sender, EventArgs e)
+        {
+           // if (!RequiredFieldValidator1.IsValid)
+           // {
+                TextBox txt = form1.FindControl(RequiredFieldValidator1.ControlToValidate) as TextBox;
+               // if (txt != null)
+               // {
+                    txt.CssClass = "failMark";
+                //}
+           // }
+        }
