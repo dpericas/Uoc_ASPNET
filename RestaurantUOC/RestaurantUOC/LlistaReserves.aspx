@@ -27,7 +27,7 @@
             </div>
         </div>
 	    <div runat="server" id="UpdatableDiv">
-            <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="1000"></asp:Timer>
+            <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="10000"></asp:Timer>
             <asp:UpdatePanel ID="UpdatePanel24" runat="server" UpdateMode="Always">
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />

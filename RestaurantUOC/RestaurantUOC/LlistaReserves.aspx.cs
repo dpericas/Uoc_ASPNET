@@ -40,10 +40,11 @@ namespace RestaurantUOC
              SqlCeDataReader resultSql = sqlQuery.ExecuteReader();
              if (resultSql.Read())
              {
+                     resultSql.Close();
+                     resultSql = sqlQuery.ExecuteReader(); //TORNEM A EXECUTAR EL READER JA QUE SI COMPROVAVEM IF READ() PERDIEM EL PRIMER REGISTRE. TANQUEM I TRONEM A OBRIR.
                      headTable.InnerHtml = "<table id=\"tableReservasA\"><tr bgcolor=\"#A4A4A4\"><td><strong>Nom</strong></td><td><strong>Cognoms</strong></td><td><strong>Telefon</strong></td><td><strong>Data</strong></td><td><strong>Comensals</strong></td></tr></table>";
                       while (resultSql.Read())
                      {
-                        
                          TableRow rowReservas = new TableRow();
                          rowReservas.ID = "Row" + resultSql["Id"].ToString();
                          rowReservas.CssClass = "treservas";
