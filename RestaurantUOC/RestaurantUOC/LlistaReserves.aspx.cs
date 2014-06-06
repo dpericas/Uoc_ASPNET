@@ -13,13 +13,9 @@ namespace RestaurantUOC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Page.IsPostBack)
-           // {
-                var typepage = "";
-                if (Request.QueryString["type"] != null) typepage = Request.QueryString["type"];
-                searchReserves(typepage);
-            //}
-           
+            var typepage = "";
+            if (Request.QueryString["type"] != null) typepage = Request.QueryString["type"];
+            searchReserves(typepage);
         }
 
          protected void searchReserves(string type24)
@@ -110,15 +106,18 @@ namespace RestaurantUOC
              SqlCeConnection linksql = new SqlCeConnection(@"Data Source='C:\Users\Uoc\Documents\GitHub\Uoc_ASPNET\restaurantuoc.sdf';Password='uoc'");
              linksql.Open();
              SqlCeCommand sqlQuery = new SqlCeCommand("DELETE FROM reserves WHERE Id=" + myID, linksql);
-             sqlQuery.ExecuteNonQuery();
+             int isRowAffected= sqlQuery.ExecuteNonQuery();
              linksql.Close();
-
-             tableReservas.Rows.Remove(rowBut);
+             if (isRowAffected == 1)  // ENS ASSEGUREM QUE LA CONSULTA HA TINGUT ÈXIT I S' HA BORRAT EL REGISTRE. LLAVORS PODEM ELIMINAR LA ROW DE LA TAULA.
+             {
+                 tableReservas.Rows.Remove(rowBut);
+                 if (tableReservas.Rows.Count == 0) Response.Redirect("LlistaReserves.aspx"); //SI NO QUEDEN FILES A LA TAULA TORNEM A GENERAR TAULA I DETECTARÀ QUE NO HI HAN REGISTRES.
+             }
          }
          protected void detail_Click(object sender, EventArgs e)
          {
              var myButton = (Button)sender;
-             var myID = int.Parse(myButton.ID.TrimStart('d', 'e', 't', 'a', 'i', 'l', 'i', 'd'));
+             var myID = System.Text.RegularExpressions.Regex.Split(myButton.ID, "detailid")[1];
              Response.Redirect("DetallReserva.aspx?id=" + myID);
          }
          protected void nova_Click(object sender, EventArgs e)
@@ -126,7 +125,7 @@ namespace RestaurantUOC
              var myButton = (Button)sender;
              if (myButton.ID != "novaresbutton")
              {
-                 var myID = int.Parse(myButton.ID.TrimStart('m', 'o', 'd', 'i', 'd'));
+                 var myID = System.Text.RegularExpressions.Regex.Split(myButton.ID, "modid")[1];
                  Response.Redirect("NovaReserva.aspx?id=" + myID);
              }
              else Response.Redirect("NovaReserva.aspx");
