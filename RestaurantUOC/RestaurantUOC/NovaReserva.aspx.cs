@@ -84,7 +84,11 @@ namespace RestaurantUOC
                 mesos.Items.FindByValue(mesosArray[Data.Month - 1]).Selected = true;
                 anys.Items.FindByValue(Data.Year.ToString()).Selected = true;
                 if (Data.Hour < 10) hores.Items.FindByValue("0" + Data.AddHours(1).Hour.ToString()).Selected = true; // Pre-Seleccionem una hora més per la nova reserva.
-                else hores.Items.FindByValue(Data.AddHours(1).Hour.ToString()).Selected = true;
+                else
+                {
+                    if (int.Parse(Data.AddHours(1).Hour.ToString()) == 0 ) hores.Items.FindByValue("00").Selected = true;
+                    else hores.Items.FindByValue(Data.AddHours(1).Hour.ToString()).Selected = true;
+                }
                 if (Data.Minute < 10) minuts.Items.FindByValue("0"+Data.Minute.ToString()).Selected = true;
                 else minuts.Items.FindByValue(Data.Minute.ToString()).Selected = true;
             }
@@ -111,7 +115,8 @@ namespace RestaurantUOC
             else timeToDif = 24 * 60 * 60 * 1000; // AMB NOVA RESERVA NOMÉS PERMETEM FINS 1 DIA ABANS.
             if (diftime < timeToDif)
             {
-                errorInfoBoxText += "DATA incorrecte. La hora de la reserva ha de ser posterior a 24h.</br>";
+                if (id != 0) errorInfoBoxText += "DATA incorrecte. No està permès modificar la reserva per abans de 1 hora. Procediu a eliminar.</br>";
+                else errorInfoBoxText += "DATA incorrecte. La hora de la reserva ha de ser posterior a 24h.</br>";
                 formFull = false;
                 dies.CssClass = "failMark";
                 mesos.CssClass = "failMark";

@@ -16,10 +16,10 @@
 	    <div id="NavButtonDiv" runat="server">
             <div id="Navul" runat="server">
                 <asp:ListItem>
-                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="#">LLISTAT</asp:HyperLink>
+                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="LlistaReserves.aspx">LLISTAT</asp:HyperLink>
                 </asp:ListItem>
                 <asp:ListItem>
-                <asp:HyperLink runat="server" CssClass="show24h menuClass" NavigateUrl="#">24h</asp:HyperLink>
+                <asp:HyperLink runat="server" CssClass="show24h menuClass" NavigateUrl="LlistaReserves.aspx?type=24h" Visible=false>24h</asp:HyperLink>
                 </asp:ListItem>
             </div>
         </div>

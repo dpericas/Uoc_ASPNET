@@ -1,4 +1,7 @@
-﻿<!-- Per tal de poder utilitzar Css superior al 2.1, posem opció a Css Internet Explorer 6.0 -->
+﻿
+
+
+<!-- IMPORTANT!!! Per tal de poder utilitzar Css superior al 2.1, posem opció a Css Internet Explorer 6.0 -->
 
 
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LlistaReserves.aspx.cs" Inherits="RestaurantUOC.LlistaReserves" %>
@@ -19,15 +22,15 @@
 	    <div id="NavButtonDiv" runat="server">
             <div id="Navul" runat="server">
                 <asp:ListItem>
-                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="#"  Visible=false>LLISTAT</asp:HyperLink>
+                    <asp:HyperLink runat="server" id="showList" CssClass="menuClass" NavigateUrl="LlistaReserves.aspx"  Visible=false>LLISTAT</asp:HyperLink>
                 </asp:ListItem>
                 <asp:ListItem>
-                <asp:HyperLink runat="server" CssClass="show24h menuClass" NavigateUrl="#"  Visible=false>24h</asp:HyperLink>
+                <asp:HyperLink runat="server" id="show24" CssClass="show24h menuClass" NavigateUrl="LlistaReserves.aspx?type=24h"  Visible=false>24h</asp:HyperLink>
                 </asp:ListItem>
             </div>
         </div>
 	    <div runat="server" id="UpdatableDiv">
-            <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="10000"></asp:Timer>
+            <asp:Timer ID="Timer1" OnTick="Timer1_Tick" runat="server" Interval="5000"></asp:Timer>
             <asp:UpdatePanel ID="UpdatePanel24" runat="server" UpdateMode="Always">
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
