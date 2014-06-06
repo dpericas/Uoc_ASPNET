@@ -72,7 +72,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DetallReserva.aspx.cs">
       <DependentUpon>DetallReserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
